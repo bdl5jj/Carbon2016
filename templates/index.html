@@ -6,4 +6,8 @@
   <h1>Flask</h1>
   <h1>{{customer}}</h1>
   <h1>{{balance}}</h1>
+  {% for val in accounts %}
+  <p><strong>Name: {{val.nickname}}</strong></p>
+  <p>Balance: {{val.balance}}</p>
+  {% endfor %}
 </div>
