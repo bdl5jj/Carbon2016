@@ -26,8 +26,11 @@ def enter():
 		acct_response = urllib.urlopen('http://api.reimaginebanking.com/customers/'+customers[0]['_id']+'/accounts?key=fdcdbc9f4d339cd5970c2d87c8e8d16f')
 		accounts = json.loads(acct_response.read())
 		customer_name = customers[0]['first_name']
-		checking = accounts[2]['balance']
-		return render_template('index.html', customer=customer_name, balance=checking)
+		checking_info = accounts[2]
+		savings_info = accounts[1]
+		credit_info = accounts[0]
+		checking_balance = checking_info['balance']
+		return render_template('index.html', customer=customer_name, balance=checking_balance)
 	except URLError, e:
 		return "404 error"
 
