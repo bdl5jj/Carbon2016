@@ -18,7 +18,7 @@ def enter():
 		response = urlopen(request)
 		customers = response.read()
 		return customers
-	except URLError as e:
+	except URLError, e:
 		return "404 errror"
 
 
