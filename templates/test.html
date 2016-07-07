@@ -16,4 +16,9 @@
   <p>Amount: {{purch.amount}}</p>
   <p>Date: {{purch.purchase_date}}</p>
   {% endfor %}
+  {% for bill in bills %}
+  <p><strong>Name: {{bill.payee}} ({{bill.nickname}})</strong></p>
+  <p>Amount: {{bill.payment_amount}}</p>
+  <p>Date: {{bill.creation_date}}</p>
+  {% endfor %}
 </div>
