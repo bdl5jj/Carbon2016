@@ -10,4 +10,10 @@
   <p><strong>Name: {{val.nickname}}</strong></p>
   <p>Balance: {{val.balance}}</p>
   {% endfor %}
+  <h1>Purchases</h1>
+  {% for purch in purchases %}
+  <p><strong>Name: {{purch.description}}</strong></p>
+  <p>Amount: {{purch.amount}}</p>
+  <p>Date: {{purch.purchase_date}}</p>
+  {% endfor %}
 </div>
