@@ -78,42 +78,15 @@
             </div>
         </div>
 
-        <!-- Controls -->
-        <!--<a class="left carousel-control" href="#myCarousel" data-slide="prev">
-            <span class="icon-prev"></span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">
-            <span class="icon-next"></span>
-        </a>
--->
     </header>
 
     <!-- Page Content -->
     <div class="container">
-        <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
         <p></p>
         <center>
         <div class="btn-group btn-group-lg btn-group-justified"  role="group" aria-label="...">
             <div class="btn-group">
-            <button id = "0" type="button" class="btn btn-default btn-lg">
+            <button id = "0" type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">
                 <span class="glyphicon glyphicon-circle-arrow-right"></span>
                 <p>Transfer funds</p>
         </button>
@@ -121,14 +94,14 @@
         <div class="btn-group">
             <button id = "1" type="button" class="btn btn-default btn-lg">
                 <span class="glyphicon glyphicon-usd"></span>
-                <p>Purchase History</p>
+                <p>View Purchases</p>
         </button>
     </div>
 
 <div class="btn-group">
             <button id = "2" type="button" class="btn btn-default btn-lg">
                 <span class="glyphicon glyphicon-exclamation-sign"></span>
-                <p>Report Fraud</p>
+                <p>View Bills</p>
         </button>
 </div>
 <div class="btn-group">
@@ -151,6 +124,26 @@
     </div>
     <!-- /.container -->
 
+    <!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	        <h4 class="modal-title" id="myModalLabel">Funds being transferred</h4>
+	      </div>
+	      <div id ="modal-body" class="modal-body">
+	        ...
+	      </div>
+	      <div class="modal-footer">
+	        Spread your hand to dismiss
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
     <!-- jQuery -->
     <!-- <script src="js/jquery.js"></script> -->
     <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
@@ -159,6 +152,7 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
     <!-- Script to Activate the Carousel -->
     <script>
+        $('#myModal').modal({ show: false});
     $('.carousel').carousel({
         interval: false //changes the speed
     });
@@ -166,6 +160,7 @@
     $('#myCarousel.carousel.slide').css('height','65%');
     var ehh = true;
     var selectedButton = 0;
+        var modalOpen = false;
     $(document).bind('keyup', function(e) {
         if(!ehh){
         if(e.which == 39){
@@ -219,37 +214,68 @@
     }
 
         if(e.which == 13){
-            if(!ehh){
+            if(modalOpen){
+               modalOpen = false;
+                $('#myModal').modal('hide');
+                if(selectedButton == 0)
+                    location.reload();
+            }
+            else if(!ehh){
                 if(selectedButton == 3){
-
+                    $("#myModalLabel").text("Help");
+                    $('#modal-body').html("Commands <p>1.Pan Left/Right by waving your hand" +
+                            "<p>2.Alternate menus by making a fist" +
+                            "<p>3.Select a button by spreadin your hand" +
+                            "<p>4. Open your overview with a finger tap");
+                    $('#myModal').modal('show');
+                    modalOpen = true;
+                }
+                else if(selectedButton == 1){
+                    $("#myModalLabel").text("Purchases");
+                    $('#modal-body').text("");
+                    $('#myModal').modal('show');
+                    modalOpen = true;
+                }
+                else if(selectedButton == 2){
+                    $("#myModalLabel").text("Bills");
+                    $('#modal-body').text("");
+                    $('#myModal').modal('show');
+                    modalOpen = true;
                 }
                 else if(selectedButton == 0){
-                    console.log($('.item.active h2').text());
+
                     if ($('.item.active h2').text() === "Checking Account"){
-                        console.log("ehh");
+                        $('#modal-body').text("Transferring $10 from Savings to Checking Account");
+                        $('#myModal').modal('show');
+                        modalOpen = true;
                         $.ajax({
                             type: 'POST',
                             url: 'http://api.reimaginebanking.com/accounts/577d3a360733d0184021f54b/transfers?key=fdcdbc9f4d339cd5970c2d87c8e8d16f',
                             data: '{"medium": "balance","payee_id": "577d3b200733d0184021f54e","amount":10.00,"transaction_date": "2016-07-07","status": "pending","description": "transfer savings to checking"}',
-                            success: function(data) { location.reload()  },
+                            success: function(data) {},
                             contentType: "application/json",
                             dataType: 'json'
                         });
                     }
 
                     else if ($('.item.active h2').text() === "Savings Account"){
+                        modalOpen = true;
+                        $('#modal-body').text("Transferring $10 from Checking to Savings Account");
+                        $('#myModal').modal('show');
                         $.ajax({
                             type: 'POST',
                             url: 'http://api.reimaginebanking.com/accounts/577d3b200733d0184021f54e/transfers?key=fdcdbc9f4d339cd5970c2d87c8e8d16f',
                             data: '{"medium": "balance","payee_id": "577d3a360733d0184021f54b","amount":10.00,"transaction_date": "2016-07-07","status": "pending","description": "transfer checking to savings"}',
-                            success: function(data) { location.reload()  },
+                            success: function(data) {},
                             contentType: "application/json",
                             dataType: 'json'
                         });
                     }
 
                     else if ($('.item.active h2').text() === "Credit Card"){
-
+                        modalOpen = true;
+                        $('#modal-body').text("Transferring money to the Credit Card Balance");
+                        $('#myModal').modal('show');
                     }
                 }
             }
