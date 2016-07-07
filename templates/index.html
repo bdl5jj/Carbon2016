@@ -11,10 +11,10 @@
     <title>page temp</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/bootstrap.min.css') }}">
 
     <!-- Custom CSS -->
-    <link href="css/half-slider.css" rel="stylesheet">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/half-slider.css') }}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -28,7 +28,7 @@
 <body>
 
     <!-- Navigation -->
-    
+
 
     <!-- Half Page Image Background Carousel Header -->
     <header id="myCarousel" class="carousel slide">
@@ -111,19 +111,19 @@
         <p>Equip yourself with a Myo Armband to use this one of a kind web-app.</p>
     </h2>
     </center>
-        
-     
-        
+
+
+
 
     </div>
     <!-- /.container -->
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
+    <!-- <script src="js/jquery.js"></script> -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
+    <!-- <script src="js/bootstrap.min.js"></script> -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
     <!-- Script to Activate the Carousel -->
     <script>
     $('.carousel').carousel({
