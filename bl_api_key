@@ -15,6 +15,7 @@ Cava ID: 577d93bcebcfe1505405b994
 
 
 
+
 getPurchasesCredit-   http://api.reimaginebanking.com/accounts/577d39130733d0184021f548/purchases?key=fdcdbc9f4d339cd5970c2d87c8e8d16f
 getPurchasesSavings-  http://api.reimaginebanking.com/accounts/577d3a360733d0184021f54b/purchases?key=fdcdbc9f4d339cd5970c2d87c8e8d16f
 getPurchasesChecking- http://api.reimaginebanking.com/accounts/577d3b200733d0184021f54e/purchases?key=fdcdbc9f4d339cd5970c2d87c8e8d16f
@@ -22,3 +23,27 @@ getPurchasesChecking- http://api.reimaginebanking.com/accounts/577d3b200733d0184
 getBillsCredit-       http://api.reimaginebanking.com/accounts/577d39130733d0184021f548/bills?key=fdcdbc9f4d339cd5970c2d87c8e8d16f
 getBillsSavings-      http://api.reimaginebanking.com/accounts/577d3a360733d0184021f54b/bills?key=fdcdbc9f4d339cd5970c2d87c8e8d16f
 getBillsChecking-     http://api.reimaginebanking.com/accounts/577d3b200733d0184021f54e/bills?key=fdcdbc9f4d339cd5970c2d87c8e8d16f
+
+Transfer Checking to Savings:
+http://api.reimaginebanking.com/accounts/577d3b200733d0184021f54e/transfers?key=fdcdbc9f4d339cd5970c2d87c8e8d16f
+
+{
+  "medium": "balance",
+  "payee_id": "577d3a360733d0184021f54b",
+  "amount":10.00,
+  "transaction_date": "2016-07-07",
+  "status": "pending",
+  "description": "transfer checking to savings"
+}
+
+Transfer Savings to Checking
+http://api.reimaginebanking.com/accounts/577d3a360733d0184021f54b/transfers?key=fdcdbc9f4d339cd5970c2d87c8e8d16f
+
+{
+  "medium": "balance",
+  "payee_id": "577d3b200733d0184021f54e",
+  "amount":10.00,
+  "transaction_date": "2016-07-07",
+  "status": "pending",
+  "description": "transfer savings to checking"
+}
