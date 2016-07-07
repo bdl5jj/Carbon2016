@@ -28,10 +28,12 @@ def enter():
     except URLError, e:
         return "404 error"
 
-def pay_bill():
-    # credit_id = 577d39130733d0184021f548
-    # checking_id = 577d3b200733d0184021f54e
-    # try:
+# def transfer_from_checking():
+#     credit_id = "577d39130733d0184021f548"
+#     checking_id = "577d3b200733d0184021f54e"
+#     savings_id = "577d3a360733d0184021f54b"
+#     try:
+        
         
 
 

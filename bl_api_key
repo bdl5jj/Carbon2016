@@ -12,3 +12,28 @@ Jasmit Sarai ID: 577d37190733d0184021f546
 Chipotle ID: 577d9326ebcfe1505405b990
 Toyota ID: 577d9381ebcfe1505405b992
 Cava ID: 577d93bcebcfe1505405b994
+
+
+Transfer Checking to Savings:
+http://api.reimaginebanking.com/accounts/577d3b200733d0184021f54e/transfers?key=fdcdbc9f4d339cd5970c2d87c8e8d16f
+
+{
+  "medium": "balance",
+  "payee_id": "577d3a360733d0184021f54b",
+  "amount":10.00,
+  "transaction_date": "2016-07-07",
+  "status": "pending",
+  "description": "transfer checking to savings"
+}
+
+Transfer Savings to Checking
+http://api.reimaginebanking.com/accounts/577d3a360733d0184021f54b/transfers?key=fdcdbc9f4d339cd5970c2d87c8e8d16f
+
+{
+  "medium": "balance",
+  "payee_id": "577d3b200733d0184021f54e",
+  "amount":10.00,
+  "transaction_date": "2016-07-07",
+  "status": "pending",
+  "description": "transfer savings to checking"
+}
