@@ -28,12 +28,6 @@ def enter():
     except URLError, e:
         return "404 error"
 
-def pay_bill():
-    # credit_id = 577d39130733d0184021f548
-    # checking_id = 577d3b200733d0184021f54e
-    # try:
-        
-
 
 
 if __name__ == '__main__':
