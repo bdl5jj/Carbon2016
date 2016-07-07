@@ -1,4 +1,3 @@
-#!flask/bin/python
 from urllib2 import Request, urlopen, URLError
 from flask import Flask, render_template, jsonify
 import urllib, json
@@ -31,4 +30,4 @@ def enter():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=8080)
