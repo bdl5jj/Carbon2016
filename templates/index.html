@@ -166,7 +166,7 @@
     var selectedButton = 0;
         var modalOpen = false;
     $(document).bind('keyup', function(e) {
-        if(!ehh){
+        if(!ehh && !modalOpen){
         if(e.which == 39){
             if(selectedButton<3){
                 var bleh = '#'+selectedButton;
@@ -208,7 +208,7 @@
             }
         }
     }
-    else{
+    else if(!modalOpen){
         if(e.which == 39){
             $('.carousel').carousel('next');
         }
@@ -235,16 +235,116 @@
                     modalOpen = true;
                 }
                 else if(selectedButton == 1){
-                    $("#myModalLabel").text("Purchases");
-                    $('#modal-body').text("");
-                    $('#myModal').modal('show');
-                    modalOpen = true;
+                    if($('.item.active h2').text() === "Checking Account") {
+                        $("#myModalLabel").text("Checking Purchases");
+                        $.ajax({
+                            type: 'GET',
+                            url: 'http://api.reimaginebanking.com/accounts/577d3b200733d0184021f54e/purchases?key=fdcdbc9f4d339cd5970c2d87c8e8d16f',
+                            success: function (data) {
+                                $("#modal-body").html("");
+                                for (item in data) {
+                                    console.log(data[item]);
+                                    $("#modal-body").append("<p><b>" + data[item]["description"] + "</b>  " + data[item]["purchase_date"] + "<p>$" + data[item]["amount"]);
+                                }
+                            },
+                            contentType: "application/json",
+                            dataType: 'json'
+                        });
+                        $('#myModal').modal('show');
+                        modalOpen = true;
+                    }
+                    if($('.item.active h2').text() === "Savings Account") {
+                        $("#myModalLabel").text("Savings Purchases");
+                        $.ajax({
+                            type: 'GET',
+                            url: 'http://api.reimaginebanking.com/accounts/577d3a360733d0184021f54b/purchases?key=fdcdbc9f4d339cd5970c2d87c8e8d16f',
+                            success: function (data) {
+                                $("#modal-body").html("");
+                                for (item in data) {
+                                    console.log(data[item]);
+                                    $("#modal-body").append("<p><b>" + data[item]["description"] + "</b>  " + data[item]["purchase_date"] + "<p>$" + data[item]["amount"]);
+                                }
+                            },
+                            contentType: "application/json",
+                            dataType: 'json'
+                        });
+                        $('#myModal').modal('show');
+                        modalOpen = true;
+                    }
+                    if($('.item.active h2').text() === "Credit Card") {
+                        $("#myModalLabel").text("Credit Card Purchases");
+                        $.ajax({
+                            type: 'GET',
+                            url: 'http://api.reimaginebanking.com/accounts/577d39130733d0184021f548/purchases?key=fdcdbc9f4d339cd5970c2d87c8e8d16f',
+                            success: function (data) {
+                                $("#modal-body").html("");
+                                for (item in data) {
+                                    console.log(data[item]);
+                                    $("#modal-body").append("<p><b>" + data[item]["description"] + "</b>  " + data[item]["purchase_date"] + "<p>$" + data[item]["amount"]);
+                                }
+                            },
+                            contentType: "application/json",
+                            dataType: 'json'
+                        });
+                        $('#myModal').modal('show');
+                        modalOpen = true;
+                    }
                 }
                 else if(selectedButton == 2){
-                    $("#myModalLabel").text("Bills");
-                    $('#modal-body').text("");
-                    $('#myModal').modal('show');
-                    modalOpen = true;
+                    if($('.item.active h2').text() === "Checking Account") {
+                        $("#myModalLabel").text("Checking Bills");
+                        $.ajax({
+                            type: 'GET',
+                            url: 'http://api.reimaginebanking.com/accounts/577d3b200733d0184021f54e/bills?key=fdcdbc9f4d339cd5970c2d87c8e8d16f',
+                            success: function (data) {
+                                $("#modal-body").html("");
+                                for (item in data) {
+                                    console.log(data[item]);
+                                    $("#modal-body").append("<p><b>" + data[item]["payee"] + "</b>  " + data[item]["payment_date"] + "<p>$" + data[item]["payment_amount"]);
+                                }
+                            },
+                            contentType: "application/json",
+                            dataType: 'json'
+                        });
+                        $('#myModal').modal('show');
+                        modalOpen = true;
+                    }
+                    if($('.item.active h2').text() === "Savings Account") {
+                        $("#myModalLabel").text("Savings Bills");
+                        $.ajax({
+                            type: 'GET',
+                            url: 'http://api.reimaginebanking.com/accounts/577d3a360733d0184021f54b/bills?key=fdcdbc9f4d339cd5970c2d87c8e8d16f',
+                            success: function (data) {
+                                $("#modal-body").html("");
+                                for (item in data) {
+                                    console.log(data[item]);
+                                    $("#modal-body").append("<p><b>" + data[item]["payee"] + "</b>  " + data[item]["payment_date"] + "<p>$" + data[item]["payment_amount"]);
+                                }
+                            },
+                            contentType: "application/json",
+                            dataType: 'json'
+                        });
+                        $('#myModal').modal('show');
+                        modalOpen = true;
+                    }
+                    if($('.item.active h2').text() === "Credit Card") {
+                        $("#myModalLabel").text("Credit Card Bills");
+                        $.ajax({
+                            type: 'GET',
+                            url: 'http://api.reimaginebanking.com/accounts/577d39130733d0184021f548/bills?key=fdcdbc9f4d339cd5970c2d87c8e8d16f',
+                            success: function (data) {
+                                $("#modal-body").html("");
+                                for (item in data) {
+                                    console.log(data[item]);
+                                    $("#modal-body").append("<p><b>" + data[item]["payee"] + "</b>  " + data[item]["payment_date"] + "<p>$" + data[item]["payment_amount"]);
+                                }
+                            },
+                            contentType: "application/json",
+                            dataType: 'json'
+                        });
+                        $('#myModal').modal('show');
+                        modalOpen = true;
+                    }
                 }
                 else if(selectedButton == 0){
 
@@ -286,7 +386,7 @@
         }
         if(e.which == 32){ //spacebar
 
-            if(ehh){
+            if(ehh && !modalOpen){
                 $('#myCarousel.carousel.slide').css('height','35%');
                 ehh = false;
                 $('button').prop('disabled', false);
@@ -294,7 +394,7 @@
                 $(bleh).removeClass("btn-default");
                 $(bleh).addClass("btn-primary");
             }
-            else{
+            else if(!modalOpen){
                 $('#myCarousel.carousel.slide').css('height','65%');
                 ehh = true;
                 $('button').prop('disabled', true);
