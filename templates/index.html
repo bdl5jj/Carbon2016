@@ -34,7 +34,7 @@
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <a href="#" class="pull-left"><img src="static/images/logo-capitalOne.png"></a>
-            </div>
+            </div><h3 id="header" style="color:white">Welcome to Myo Go Round, {{customer}}!</h3>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
@@ -53,12 +53,13 @@
             <li data-target="#myCarousel" data-slide-to="2"></li>
         </ol>
 
-        <!-- Wrapper for Slides -->
+    <!-- Wrapper for Slides -->
         <div class="carousel-inner">
             <div class="item active">
                 <!-- Set the first background image using inline CSS below. -->
                 <div class="fill" style="background-image: url('static/images/downtowncrossing-large.jpg');"></div>
                 <div class="carousel-caption">
+                    <h3>Balance: ${{accounts[2]['balance']}}</h3>
                     <h2>Checking Account</h2>
                 </div>
             </div>
@@ -66,6 +67,7 @@
                 <!-- Set the second background image using inline CSS below. -->
                 <div class="fill" style="background-image:url('static/images/harvardsquare-large.jpg');"></div>
                 <div class="carousel-caption">
+                <h3>Balance: ${{accounts[1]['balance']}}</h3>
                     <h2>Savings Account</h2>
                 </div>
             </div>
@@ -73,6 +75,8 @@
                 <!-- Set the third background image using inline CSS below. -->
                 <div class="fill" style="background-image:url('static/images/inkblock-large.jpg');"></div>
                 <div class="carousel-caption">
+                <h3>Balance: ${{accounts[0]['balance']}}</h3>
+                <h3>Rewards: ${{accounts[0]['rewards']}}</h3>
                     <h2>Credit Card</h2>
                 </div>
             </div>
