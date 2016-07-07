@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>page temp</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/half-slider.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    
+
+    <!-- Half Page Image Background Carousel Header -->
+    <header id="myCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for Slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <!-- Set the first background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide One');"></div>
+                <div class="carousel-caption">
+                    <h2>Checking account</h2>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the second background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Two');"></div>
+                <div class="carousel-caption">
+                    <h2>Savings account</h2>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the third background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide Three');"></div>
+                <div class="carousel-caption">
+                    <h2>Credit Card</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <!--<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+-->
+    </header>
+
+    <!-- Page Content -->
+    <div class="container">
+        <p></p>
+        <center>
+        <div class="btn-group btn-group-lg btn-group-justified"  role="group" aria-label="...">
+            <div class="btn-group">
+            <button id = "0" type="button" class="btn btn-default btn-lg">
+                <span class="glyphicon glyphicon-circle-arrow-right"></span>
+                <p>Transfer funds</p>
+        </button>
+    </div>
+        <div class="btn-group">
+            <button id = "1" type="button" class="btn btn-default btn-lg">
+                <span class="glyphicon glyphicon-usd"></span>
+                <p>Pay Bill</p>
+        </button>
+    </div>
+
+<div class="btn-group">
+            <button id = "2" type="button" class="btn btn-default btn-lg">
+                <span class="glyphicon glyphicon-exclamation-sign"></span>
+                <p>Report Fraud</p>
+        </button>
+</div>
+<div class="btn-group">
+            <button id = "3" type="button" class="btn btn-default btn-lg">
+                <span class="glyphicon glyphicon-question-sign"></span>
+                <p>Help</p>
+        </button>
+    </div>
+        </div>
+        <h2>
+            <p></p>
+        <p>Welcome to the Myo Go Round, Capital One's latest offer in online banking!</p>
+        <p>Equip yourself with a Myo Armband to use this one of a kind web-app.</p>
+    </h2>
+    </center>
+        
+     
+        
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: false //changes the speed
+    });
+    $('button').prop('disabled', true)
+    $('#myCarousel.carousel.slide').css('height','65%');
+    var ehh = true;
+    var selectedButton = 0;
+    $(document).bind('keyup', function(e) {
+        if(!ehh){
+        if(e.which == 39){
+            if(selectedButton<3){
+                var bleh = '#'+selectedButton;
+                $(bleh).removeClass("btn-primary");
+                $(bleh).addClass("btn-default");
+                selectedButton++;
+                bleh = '#'+selectedButton;
+                $(bleh).removeClass("btn-default");
+                $(bleh).addClass("btn-primary");
+            }
+            else{
+                var bleh = '#'+selectedButton;
+                $(bleh).removeClass("btn-primary");
+                $(bleh).addClass("btn-default");
+                selectedButton = 0;
+                bleh = '#'+selectedButton;
+                $(bleh).removeClass("btn-default");
+                $(bleh).addClass("btn-primary");
+            }
+        }
+        else if(e.which == 37){
+            if(selectedButton==0){
+                var bleh = '#'+selectedButton;
+                $(bleh).removeClass("btn-primary");
+                $(bleh).addClass("btn-default");
+                selectedButton = 3;
+                bleh = '#'+selectedButton;
+                $(bleh).removeClass("btn-default");
+                $(bleh).addClass("btn-primary");
+            }
+            else{
+                var bleh = '#'+selectedButton;
+                $(bleh).removeClass("btn-primary");
+                $(bleh).addClass("btn-default");
+                selectedButton--;
+                bleh = '#'+selectedButton;
+                $(bleh).removeClass("btn-default");
+                $(bleh).addClass("btn-primary");
+            }
+        }
+    }
+    else{
+        if(e.which == 39){
+            $('.carousel').carousel('next');
+        }
+        else if(e.which == 37){
+            $('.carousel').carousel('prev');
+        }
+    }
+
+        if(e.which == 13){
+            if(!ehh){
+                console.log(selectedButton);
+            }
+        }
+        if(e.which == 32){ //spacebar
+
+            if(ehh){
+                $('#myCarousel.carousel.slide').css('height','35%');
+                ehh = false;
+                $('button').prop('disabled', false);
+                var bleh = '#'+selectedButton;
+                $(bleh).removeClass("btn-default");
+                $(bleh).addClass("btn-primary");
+            }
+            else{
+                $('#myCarousel.carousel.slide').css('height','65%');
+                ehh = true;
+                $('button').prop('disabled', true);
+
+            }
+        }
+    });
+    </script>
+
+</body>
+
+</html>
